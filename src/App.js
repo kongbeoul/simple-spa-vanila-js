@@ -1,10 +1,11 @@
 import { pushState, replaceState } from "./utils/routes.js";
 import { changeRouter } from "./reducer/route.js"; 
+import router from "./router/index.js";
 
 export default function App($app, store) {
     const handlePopState = e => {
         const state = e.state;
-        const data = store.getState().route.router.find(v => v.state === state);
+        const data = router.find(v => v.state === state);
         store.dispatch(changeRouter({
             ...data
         }));
